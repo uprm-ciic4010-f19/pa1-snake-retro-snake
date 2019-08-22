@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+
 /**
  * Created by AlexVR on 7/2/2018.
  */
@@ -101,10 +102,15 @@ public class Player {
     }
 
     public void render(Graphics g,Boolean[][] playeLocation){
-        Random r = new Random();
+//        Random r = new Random();
+        Random newColor = new Random();
+    	float red = newColor.nextFloat();
+    	float green = newColor.nextFloat();
+    	float blue = newColor.nextFloat();
+    	Color randomColor = new Color(red,green,blue);
         for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
             for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
-                g.setColor(Color.WHITE);
+                g.setColor(randomColor); // sets the color to the snake
 
                 if(playeLocation[i][j]||handler.getWorld().appleLocation[i][j]){
                     g.fillRect((i*handler.getWorld().GridPixelsize),
