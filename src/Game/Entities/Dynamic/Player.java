@@ -20,6 +20,9 @@ public class Player {
 
     public int xCoord;
     public int yCoord;
+    
+    public double displayScore =  0;
+    public double trackScore = 0;
 
     public int moveCounter;
     public int speed;
@@ -123,6 +126,10 @@ public class Player {
 
         if(handler.getWorld().appleLocation[xCoord][yCoord]){
             Eat();
+            trackScore = Math.sqrt(2*trackScore+1);
+            if(displayScore<trackScore) {
+            	displayScore= trackScore;
+            }
         }
 
         if(!handler.getWorld().body.isEmpty()) {
@@ -135,12 +142,19 @@ public class Player {
 
     public void render(Graphics g,Boolean[][] playeLocation){
 //        Random r = new Random();
+    	g.setColor(new Color(172, 225, 175));;
+    	g.setFont(new Font("Monospaced",1,40));
+    	g.drawString("Score: "+displayScore, 4, 35);
+    	
+    	
+    	
         Random newColor = new Random();
     	float red = newColor.nextFloat();
     	float green = newColor.nextFloat();
     	float blue = newColor.nextFloat();
     	Color randomColor = new Color(red,green,blue);
     	Color newGreen = new Color(172, 225, 175);
+    	
         for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
             for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
                 g.setColor(newGreen); // sets the color to the snake
