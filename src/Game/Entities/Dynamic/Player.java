@@ -20,6 +20,7 @@ public class Player {
     public int yCoord;
 
     public int moveCounter;
+    public int speed;
 
     public String direction;//is your first name one?
 
@@ -31,12 +32,13 @@ public class Player {
         direction= "Right";
         justAte = false;
         lenght= 1;
+        speed = 5;
 
     }
 
     public void tick(){
         moveCounter++;
-        if(moveCounter>=5) {
+        if(moveCounter>=speed) { // this changes the speed
             checkCollisionAndMove();
             moveCounter=0;
         }
@@ -48,7 +50,16 @@ public class Player {
             direction="Left";
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT)){
             direction="Right";
+        } if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)) {
+        	handler.getWorld().body.add(new Tail(xCoord, yCoord, handler));
+        } 
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_MINUS)) {
+        	speed =  speed + 2;
         }
+        if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_PLUS)) {
+        	speed = speed - 2;
+        }
+        	
 
     }
 
@@ -108,9 +119,10 @@ public class Player {
     	float green = newColor.nextFloat();
     	float blue = newColor.nextFloat();
     	Color randomColor = new Color(red,green,blue);
+    	Color newGreen = new Color(172, 225, 175);
         for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
             for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
-                g.setColor(randomColor); // sets the color to the snake
+                g.setColor(newGreen); // sets the color to the snake
 
                 if(playeLocation[i][j]||handler.getWorld().appleLocation[i][j]){
                     g.fillRect((i*handler.getWorld().GridPixelsize),
@@ -231,6 +243,7 @@ public class Player {
         }
         handler.getWorld().body.addLast(tail);
         handler.getWorld().playerLocation[tail.x][tail.y] = true;
+        
     }
 
     public void kill(){
