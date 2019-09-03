@@ -4,7 +4,9 @@ import Main.Handler;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.List;
 
 
 /**
@@ -23,6 +25,25 @@ public class Player {
     public int speed;
 
     public String direction;//is your first name one?
+    
+//    public String randomDirection() {
+//    	List<String> list = new ArrayList<>();
+//
+//    	list.add("Right");
+//    	list.add("Left");
+//    	list.add("Up");
+//    	list.add("Down");
+//    	
+//    	Random indexRandom = new Random(list.size());
+//    	
+//    	int index = indexRandom.nextInt(list.size());
+//    	
+//    	String newDirection = list.get(index);
+//    	
+//    	return newDirection;
+//    	
+//    	
+//    }
 
     public Player(Handler handler){
         this.handler = handler;
