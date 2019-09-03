@@ -54,10 +54,10 @@ public class Player {
         	handler.getWorld().body.add(new Tail(xCoord, yCoord, handler));
         } 
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_MINUS)) {
-        	speed =  speed + 2;
+        	speed++;
         }
-        if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_PLUS)) {
-        	speed = speed - 2;
+        if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_EQUALS)) {
+        	speed--;
         }
         	
 
