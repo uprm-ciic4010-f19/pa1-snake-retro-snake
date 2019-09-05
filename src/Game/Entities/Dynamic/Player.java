@@ -85,7 +85,10 @@ public class Player {
 		}
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_EQUALS)) {
 			speed--;
-		}
+		} if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)) {
+        	State.setState(handler.getGame().pauseState);
+        }
+
 
 
 	}
