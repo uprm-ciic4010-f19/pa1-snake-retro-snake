@@ -6,6 +6,9 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Random;
+
+import Game.GameStates.State;
+
 import java.util.List;
 
 
@@ -121,7 +124,11 @@ public class Player {
                 }
                 break;
         }
+        if (handler.getWorld().playerLocation[xCoord][yCoord]) {
+        	State.setState(handler.getGame().menuState);
+		}else {
         handler.getWorld().playerLocation[xCoord][yCoord]=true;
+		}
 
 
         if(handler.getWorld().appleLocation[xCoord][yCoord]){
