@@ -29,7 +29,6 @@ public class Player {
 
 	public int moveCounter;
 	public int speed;
-	public static int steps;
 
 	public String direction;//is your first name one?
 
@@ -70,13 +69,13 @@ public class Player {
 			checkCollisionAndMove();
 			moveCounter=0;
 		}
-		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP) || direction != "Down"){
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP)){
 			direction="Up";
-		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN) || direction != "Up"){
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN)){
 			direction="Down";
-		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT) || direction != "Right"){
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT)){
 			direction="Left";
-		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT) || direction != "Left"){
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT)){
 			direction="Right";
 		} if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)) {
 			handler.getWorld().body.add(new Tail(xCoord, yCoord, handler));
@@ -86,8 +85,6 @@ public class Player {
 		}
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_EQUALS)) {
 			speed--;
-		} if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)) {
-        	State.setState(handler.getGame().pauseState);
 		}
 
 
@@ -136,7 +133,6 @@ public class Player {
 
 		if(handler.getWorld().appleLocation[xCoord][yCoord]){
 			Eat();
-			steps ++;
 			trackScore = Math.sqrt(2*trackScore+1);
 			if(displayScore<trackScore) {
 				displayScore= trackScore;
