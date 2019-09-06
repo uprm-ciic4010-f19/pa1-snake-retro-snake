@@ -128,7 +128,7 @@ public class Player {
 			break;
 		}
 		if (handler.getWorld().playerLocation[xCoord][yCoord]) {
-			State.setState(handler.getGame().menuState);
+			State.setState(handler.getGame().gameOverState);
 		}else {
 			handler.getWorld().playerLocation[xCoord][yCoord]=true;
 		}

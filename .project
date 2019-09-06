@@ -14,4 +14,16 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>res/Sheets/gameOverSnake4.5.png</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Desktop/inso/workspace/ProjectsF&apos;19/gameOverSnake4.5.png</locationURI>
+		</link>
+		<link>
+			<name>res/Sheets/gameOverSnake5.0.png</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Desktop/inso/workspace/ProjectsF&apos;19/gamOverSnake5.0.png</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
