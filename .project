@@ -45,5 +45,15 @@
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Desktop/inso/workspace/ProjectsF&apos;19/gamOverSnake5.0.png</locationURI>
 		</link>
+		<link>
+			<name>res/Sheets/newSnakeTitle2.0.png</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Desktop/inso/workspace/ProjectsF&apos;19/newSnakeTitle2.0.png</locationURI>
+		</link>
+		<link>
+			<name>res/Sheets/pauseState.png</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Desktop/inso/workspace/ProjectsF&apos;19/pauseState.png</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>
