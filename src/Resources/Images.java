@@ -18,7 +18,12 @@ public class Images {
     public static BufferedImage[] BTitle;
     public static BufferedImage[] Options;
     public static ImageIcon icon;
+    //newGameOver
     public static BufferedImage gameOver;
+    //new title and option buttons
+    public static BufferedImage[] optionButton;
+    public static BufferedImage[] titleButton;
+    
 
     public Images() {
 
@@ -26,8 +31,15 @@ public class Images {
         Resume = new BufferedImage[2];
         BTitle = new BufferedImage[2];
         Options = new BufferedImage[2];
+        optionButton = new BufferedImage[2];
+        titleButton = new BufferedImage[2];
 
         try {
+        	
+        	titleButton[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/titleButton.png"));
+        	titleButton[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/titleButtonPushed.png"));
+        	optionButton[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/optionButton.png"));
+        	optionButton[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/optionButtonPushed.png"));
 
         	gameOver = ImageIO.read(getClass().getResourceAsStream("/Sheets/gameOverSnake5.0.png"));
         	

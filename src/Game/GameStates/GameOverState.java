@@ -17,12 +17,12 @@ public class GameOverState extends State {
 		 uiManager = new UIManager(handler);
 	        handler.getMouseManager().setUimanager(uiManager);
 
-	        uiManager.addObjects(new UIImageButton(480, 550, 128, 64, Images.Options, () -> {
+	        uiManager.addObjects(new UIImageButton(480, 550, 128, 64, Images.optionButton, () -> {
 	            handler.getMouseManager().setUimanager(null);
 	            State.setState(handler.getGame().menuState);
 	        }));
 
-	        uiManager.addObjects(new UIImageButton(200, 550, 128, 64, Images.BTitle, () -> {
+	        uiManager.addObjects(new UIImageButton(200, 550, 128, 64, Images.titleButton, () -> {
 	            handler.getMouseManager().setUimanager(null);
 	            State.setState(handler.getGame().menuState);
 	        }));
