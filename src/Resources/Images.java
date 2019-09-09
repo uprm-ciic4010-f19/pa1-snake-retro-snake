@@ -33,11 +33,10 @@ public class Images {
         Options = new BufferedImage[2];
         optionButton = new BufferedImage[2];
         titleButton = new BufferedImage[2];
-
         try {
         	
-        	titleButton[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/titleButton.png"));
-        	titleButton[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/titleButtonPushed.png"));
+        	titleButton[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/titleButton2.0.png"));
+        	titleButton[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/titleButtonPushed2.0.png"));
         	optionButton[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/optionButton.png"));
         	optionButton[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/optionButtonPushed.png"));
 
