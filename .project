@@ -16,16 +16,6 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>res/Buttons/titleButton.png</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/inso/workspace/ProjectsF&apos;19/titleButton.png</locationURI>
-		</link>
-		<link>
-			<name>res/Buttons/titleButtonPushed.png</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/inso/workspace/ProjectsF&apos;19/titleButtonPushed.png</locationURI>
-		</link>
-		<link>
 			<name>res/Sheets/gameOverSnake4.5.png</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Desktop/inso/workspace/ProjectsF&apos;19/gameOverSnake4.5.png</locationURI>
