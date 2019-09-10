@@ -11,6 +11,7 @@ public class Apple {
 
     public int xCoord;
     public int yCoord;
+    public static boolean goodApple;
 
     public Apple(Handler handler,int x, int y){
         this.handler=handler;
@@ -18,5 +19,9 @@ public class Apple {
         this.yCoord=y;
     }
 
-//    public 
+//    public boolean isGood(int steps) {
+//    	if (steps % 20 >= 5) {
+//    		goodApple
+//    	}
+//    }
 }

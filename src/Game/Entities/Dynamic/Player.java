@@ -29,6 +29,7 @@ public class Player {
 
 	public int moveCounter;
 	public int speed;
+	public int steps;
 
 	public String direction;//is your first name one?
 
@@ -170,12 +171,20 @@ public class Player {
 			for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
 				g.setColor(newGreen); // sets the color to the snake
 
-				if(playeLocation[i][j]||handler.getWorld().appleLocation[i][j]){
+				if(playeLocation[i][j]) {
 					g.fillRect((i*handler.getWorld().GridPixelsize),
 							(j*handler.getWorld().GridPixelsize),
 							handler.getWorld().GridPixelsize,
 							handler.getWorld().GridPixelsize);
 				}
+				if (handler.getWorld().appleLocation[i][j]){
+					g.setColor(Color.RED);
+					g.fillRect((i*handler.getWorld().GridPixelsize),
+							(j*handler.getWorld().GridPixelsize),
+							handler.getWorld().GridPixelsize,
+							handler.getWorld().GridPixelsize);
+				}
+					
 
 			}
 		}
@@ -185,6 +194,7 @@ public class Player {
 
 	public void Eat(){
 		lenght++;
+		steps ++;
 		Tail tail= null;
 		handler.getWorld().appleLocation[xCoord][yCoord]=false;
 		handler.getWorld().appleOnBoard=false;
