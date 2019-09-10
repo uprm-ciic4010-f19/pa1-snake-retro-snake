@@ -77,7 +77,7 @@ public class Player {
 			direction="Left";
 		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT) && direction != "Left"){
 			direction="Right";
-		} if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)) {
+		} if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_N) && lenght > 1) {
 			handler.getWorld().body.add(new Tail(xCoord, yCoord, handler));
 		} 
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_MINUS)) {
