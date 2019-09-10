@@ -169,9 +169,10 @@ public class Player {
 
 		for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
 			for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
-				g.setColor(newGreen); // sets the color to the snake
+				 // sets the color to the snake
 
 				if(playeLocation[i][j]) {
+					g.setColor(newGreen);
 					g.fillRect((i*handler.getWorld().GridPixelsize),
 							(j*handler.getWorld().GridPixelsize),
 							handler.getWorld().GridPixelsize,
