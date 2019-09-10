@@ -35,12 +35,12 @@ public class Images {
         titleButton = new BufferedImage[2];
         try {
         	
-        	titleButton[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/titleButton2.0.png"));
-        	titleButton[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/titleButtonPushed2.0.png"));
-        	optionButton[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/optionButton.png"));
-        	optionButton[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/optionButtonPushed.png"));
+        	titleButton[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitle.png"));
+        	titleButton[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitleP.png"));
+        	optionButton[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
+        	optionButton[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
 
-        	gameOver = ImageIO.read(getClass().getResourceAsStream("/Sheets/gameOverSnake5.0.png"));
+        	gameOver = ImageIO.read(getClass().getResourceAsStream("/Sheets/gamOverSnake5.0.png"));
         	
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/newSnakeTitle2.0.png"));
             Pause = ImageIO.read(getClass().getResourceAsStream("/Sheets/pauseState.png"));

@@ -136,6 +136,7 @@ public class Player {
 
 		if(handler.getWorld().appleLocation[xCoord][yCoord]){
 			Eat();
+			speed ++;
 			trackScore = Math.sqrt(2*trackScore+1);
 			if(displayScore<trackScore) {
 				displayScore= trackScore;
