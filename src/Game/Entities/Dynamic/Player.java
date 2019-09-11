@@ -79,8 +79,13 @@ public class Player {
 		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT) && direction != "Left"){
 			direction="Right";
 		} if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_N) && lenght > 1) {
-			handler.getWorld().body.add(new Tail(xCoord, yCoord, handler));
-		} 
+			handler.getWorld().body.addFirst(new Tail(xCoord, yCoord, handler));
+		} if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_M) && lenght > 0) {
+			handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
+			handler.getWorld().body.removeLast();
+//			handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
+//			handler.getWorld().body.removeLast();
+		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_MINUS)) {
 			speed++;
 		}
@@ -195,7 +200,7 @@ public class Player {
 
 	public void Eat(){
 		lenght++;
-		steps ++;
+		speed --;
 		Tail tail= null;
 		handler.getWorld().appleLocation[xCoord][yCoord]=false;
 		handler.getWorld().appleOnBoard=false;

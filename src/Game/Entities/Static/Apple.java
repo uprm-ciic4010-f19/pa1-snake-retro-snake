@@ -18,10 +18,7 @@ public class Apple {
         this.xCoord=x;
         this.yCoord=y;
     }
-
-//    public boolean isGood(int steps) {
-//    	if (steps % 20 >= 5) {
-//    		goodApple
-//    	}
-//    }
+    
+    public boolean isGood() {
+    	return false;    }
 }
