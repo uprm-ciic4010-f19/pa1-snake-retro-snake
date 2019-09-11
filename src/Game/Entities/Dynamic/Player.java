@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
+import Game.Entities.Static.Apple;
 import Game.GameStates.State;
 
 import java.util.List;
@@ -29,35 +30,35 @@ public class Player {
 
 	public int moveCounter;
 	public int speed;
-	public int steps;
+	public static int steps;
+	public int index;
 
 	public String direction;//is your first name one?
 
-			//    public String randomDirection() {
-	//    	List<String> list = new ArrayList<>();
-	//
-	//    	list.add("Right");
-	//    	list.add("Left");
-	//    	list.add("Up");
-	//    	list.add("Down");
-	//    	
-	//    	Random indexRandom = new Random(list.size());
-	//    	
-	//    	int index = indexRandom.nextInt(list.size());
-	//    	
-	//    	String newDirection = list.get(index);
-	//    	
-	//    	return newDirection;
-	//    	
-	//    	
-	//    }
+	public String randomDirection() {
+	    	List<String> list = new ArrayList<>();
+	    	list.add("Right");
+	    	list.add("Left");
+	    	
+	    	Random indexRandom = new Random();
+	    	
+	    	index = indexRandom.nextInt(list.size());
+	    	
+	    	String newDirection = list.get(index);
+	    	
+	    	System.out.println(index);
+	    	
+	    	return newDirection;
+	    	
+	    	
+	    }
 
 	public Player(Handler handler){
 		this.handler = handler;
 		xCoord = 0;
 		yCoord = 0;
 		moveCounter = 0;
-		direction= "Right";
+		direction= randomDirection();
 		justAte = false;
 		lenght= 1;
 		speed = 5;
@@ -142,7 +143,7 @@ public class Player {
 
 		if(handler.getWorld().appleLocation[xCoord][yCoord]){
 			Eat();
-			speed ++;
+			steps --;
 			trackScore = Math.sqrt(2*trackScore+1);
 			if(displayScore<trackScore) {
 				displayScore= trackScore;
@@ -184,7 +185,16 @@ public class Player {
 							handler.getWorld().GridPixelsize);
 				}
 				if (handler.getWorld().appleLocation[i][j]){
-					g.setColor(Color.RED);
+					if (Apple.goodApple) {
+						g.setColor(Color.RED);
+					} else {
+						g.setColor(Color.black);
+						handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
+						handler.getWorld().body.removeLast();
+						if (lenght == 1) {
+							kill();
+						}
+					}
 					g.fillRect((i*handler.getWorld().GridPixelsize),
 							(j*handler.getWorld().GridPixelsize),
 							handler.getWorld().GridPixelsize,
