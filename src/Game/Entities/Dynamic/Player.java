@@ -18,6 +18,7 @@ import java.util.List;
  */
 public class Player {
 
+	
 	public int lenght;
 	public boolean justAte;
 	private Handler handler;
@@ -32,6 +33,7 @@ public class Player {
 	public int speed;
 	public static int steps;
 	public int index;
+	public boolean checkApple;
 
 	public String direction;//is your first name one?
 
@@ -52,6 +54,15 @@ public class Player {
 	    	
 	    	
 	    }
+		private static Color randomColor() {
+			Random newColor = new Random();
+			float red = newColor.nextFloat();
+			float green = newColor.nextFloat();
+			float blue = newColor.nextFloat();
+			return new Color(red,green,blue);
+	}
+		private static final Color newColor = randomColor();
+		
 
 	public Player(Handler handler){
 		this.handler = handler;
@@ -62,6 +73,8 @@ public class Player {
 		justAte = false;
 		lenght= 1;
 		speed = 5;
+		steps = 0;
+		checkApple = Apple.isGood();
 
 	}
 
@@ -79,7 +92,7 @@ public class Player {
 			direction="Left";
 		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT) && direction != "Left"){
 			direction="Right";
-		} if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_N) && lenght > 1) {
+		} if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)) {
 			handler.getWorld().body.addFirst(new Tail(xCoord, yCoord, handler));
 		} if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_M) && lenght > 0) {
 			handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
@@ -143,7 +156,6 @@ public class Player {
 
 		if(handler.getWorld().appleLocation[xCoord][yCoord]){
 			Eat();
-			steps --;
 			trackScore = Math.sqrt(2*trackScore+1);
 			if(displayScore<trackScore) {
 				displayScore= trackScore;
@@ -160,41 +172,26 @@ public class Player {
 
 	public void render(Graphics g,Boolean[][] playeLocation){
 		//        Random r = new Random();
+		steps ++;
 		g.setColor(new Color(172, 225, 175));;
 		g.setFont(new Font("Monospaced",1,40));
 		g.drawString("Score: "+displayScore, 4, 35);
-
-
-
-		Random newColor = new Random();
-		float red = newColor.nextFloat();
-		float green = newColor.nextFloat();
-		float blue = newColor.nextFloat();
-		Color randomColor = new Color(red,green,blue);
 		Color newGreen = new Color(172, 225, 175);
-
+		
+		
 		for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
 			for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
-				 // sets the color to the snake
+				 
 
-				if(playeLocation[i][j]) {
-					g.setColor(newGreen);
+				if(playeLocation[i][j]) { // sets the color to the snake
+					g.setColor(Player.newColor);
 					g.fillRect((i*handler.getWorld().GridPixelsize),
 							(j*handler.getWorld().GridPixelsize),
 							handler.getWorld().GridPixelsize,
 							handler.getWorld().GridPixelsize);
 				}
-				if (handler.getWorld().appleLocation[i][j]){
-					if (Apple.goodApple) {
-						g.setColor(Color.RED);
-					} else {
-						g.setColor(Color.black);
-						handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
-						handler.getWorld().body.removeLast();
-						if (lenght == 1) {
-							kill();
-						}
-					}
+				if (handler.getWorld().appleLocation[i][j]){ // sets color to the apple
+					g.setColor(Color.RED);
 					g.fillRect((i*handler.getWorld().GridPixelsize),
 							(j*handler.getWorld().GridPixelsize),
 							handler.getWorld().GridPixelsize,

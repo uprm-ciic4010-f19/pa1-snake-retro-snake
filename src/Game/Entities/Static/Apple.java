@@ -12,23 +12,21 @@ public class Apple {
 
     public int xCoord;
     public int yCoord, alive;
-    public static boolean goodApple = true;
-    public int rotten;
+    public static boolean goodApple;
     
 
     public Apple(Handler handler,int x, int y){
         this.handler=handler;
         this.xCoord=x;
         this.yCoord=y;
-        this.alive = Player.steps;
-        rotten = alive + 50;
     }
     
-    public boolean isGood() {
-    	if (Player.steps > rotten) {
-    		goodApple = false;
+    public static boolean isGood(){
+    	if (Player.steps % 50 != 0) {
+    		goodApple = true;
     		return goodApple;
     	} else {
+    		goodApple = false;
     		return goodApple;
     	}
     	    }
