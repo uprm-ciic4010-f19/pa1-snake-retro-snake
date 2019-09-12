@@ -13,20 +13,25 @@ public class Apple {
     public int xCoord;
     public int yCoord, alive;
     public static boolean goodApple;
+    public static int rotten;
     
 
     public Apple(Handler handler,int x, int y){
         this.handler=handler;
         this.xCoord=x;
         this.yCoord=y;
+        this.alive = Player.steps;
+        Apple.rotten = alive + 100;
     }
     
     public static boolean isGood(){
-    	if (Player.steps % 50 != 0) {
-    		goodApple = true;
+    	if (Player.steps > rotten) {
+    		goodApple = false;
+    		System.out.println("Apple is bad" + Player.steps);
     		return goodApple;
     	} else {
-    		goodApple = false;
+    		goodApple = true;
+    		System.out.println("Apple is good" + Player.steps);
     		return goodApple;
     	}
     	    }

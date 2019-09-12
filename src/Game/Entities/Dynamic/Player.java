@@ -41,14 +41,16 @@ public class Player {
 	    	List<String> list = new ArrayList<>();
 	    	list.add("Right");
 	    	list.add("Left");
+	    	list.add("Down");
+	    	list.add("Up");
 	    	
 	    	Random indexRandom = new Random();
 	    	
 	    	index = indexRandom.nextInt(list.size());
 	    	
 	    	String newDirection = list.get(index);
-	    	
-	    	System.out.println(index);
+	 
+//	    	System.out.println(index);
 	    	
 	    	return newDirection;
 	    	
@@ -72,14 +74,15 @@ public class Player {
 		direction= randomDirection();
 		justAte = false;
 		lenght= 1;
-		speed = 5;
+		speed = 10;
 		steps = 0;
-		checkApple = Apple.isGood();
 
 	}
 
 	public void tick(){
 		moveCounter++;
+		steps ++;
+		System.out.println(steps);
 		if(moveCounter>=speed) { // this changes the speed
 			checkCollisionAndMove();
 			moveCounter=0;
@@ -97,8 +100,8 @@ public class Player {
 		} if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_M) && lenght > 0) {
 			handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
 			handler.getWorld().body.removeLast();
-//			handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
-//			handler.getWorld().body.removeLast();
+			handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
+			handler.getWorld().body.removeLast();
 		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_MINUS)) {
 			speed++;
@@ -114,6 +117,7 @@ public class Player {
 	}
 
 	public void checkCollisionAndMove(){
+		checkApple = Apple.isGood();
 		handler.getWorld().playerLocation[xCoord][yCoord]=false;
 		int x = xCoord;
 		int y = yCoord;
@@ -156,10 +160,28 @@ public class Player {
 
 		if(handler.getWorld().appleLocation[xCoord][yCoord]){
 			Eat();
-			trackScore = Math.sqrt(2*trackScore+1);
+			trackScore += Math.sqrt(2*trackScore+1);
 			if(displayScore<trackScore) {
 				displayScore= trackScore;
-			}
+//			if (checkApple == false) {
+//				if(handler.getWorld().body.size() > 1 && handler.getWorld().body.isEmpty() == false) {
+//					
+//					} 
+//					handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
+//					handler.getWorld().body.removeLast();
+//					handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
+//					handler.getWorld().body.removeLast();
+//				} else {
+//					kill();
+//				}
+//				}
+//			
+//			if (checkApple == true) {
+//				trackScore += Math.sqrt(2*trackScore+1);
+//				if(displayScore<trackScore) {
+//				displayScore= trackScore;
+//				}
+//			}
 		}
 
 		if(!handler.getWorld().body.isEmpty()) {
@@ -167,12 +189,13 @@ public class Player {
 			handler.getWorld().body.removeLast();
 			handler.getWorld().body.addFirst(new Tail(x, y,handler));
 		}
+		}
 
-	}
+
+		}
 
 	public void render(Graphics g,Boolean[][] playeLocation){
 		//        Random r = new Random();
-		steps ++;
 		g.setColor(new Color(172, 225, 175));;
 		g.setFont(new Font("Monospaced",1,40));
 		g.drawString("Score: "+displayScore, 4, 35);
@@ -191,7 +214,11 @@ public class Player {
 							handler.getWorld().GridPixelsize);
 				}
 				if (handler.getWorld().appleLocation[i][j]){ // sets color to the apple
-					g.setColor(Color.RED);
+					if (checkApple == true) {
+						g.setColor(Color.RED);
+					} else if(checkApple == false) {
+						g.setColor(Color.black);
+					}
 					g.fillRect((i*handler.getWorld().GridPixelsize),
 							(j*handler.getWorld().GridPixelsize),
 							handler.getWorld().GridPixelsize,
