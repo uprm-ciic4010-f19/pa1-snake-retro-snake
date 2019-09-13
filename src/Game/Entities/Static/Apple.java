@@ -20,7 +20,7 @@ public class Apple {
         this.handler=handler;
         this.xCoord=x;
         this.yCoord=y;
-        turnsRotten = Player.steps + 300;
+        turnsRotten = Player.steps + 400;
     }
     
     public static boolean isGood(){
