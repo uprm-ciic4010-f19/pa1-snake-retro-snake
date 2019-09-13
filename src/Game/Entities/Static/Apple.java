@@ -21,7 +21,7 @@ public class Apple {
         this.xCoord=x;
         this.yCoord=y;
         this.alive = Player.steps;
-        Apple.rotten = alive + 250;
+        Apple.rotten = alive + 300;
     }
     
     public static boolean isGood(){

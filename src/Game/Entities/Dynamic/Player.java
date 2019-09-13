@@ -63,7 +63,7 @@ public class Player {
 			float blue = newColor.nextFloat();
 			return new Color(red,green,blue);
 	}
-		private static final Color newColor = randomColor();
+		private static Color newColor = null;
 		
 
 	public Player(Handler handler){
@@ -74,8 +74,9 @@ public class Player {
 		direction= randomDirection();
 		justAte = false;
 		lenght= 1;
-		speed = 10;
+		speed = 8;
 		steps = 0;
+		newColor = randomColor();
 
 	}
 
@@ -151,7 +152,7 @@ public class Player {
 			break;
 		}
 		if (handler.getWorld().playerLocation[xCoord][yCoord]) {
-			State.setState(handler.getGame().gameOverState);
+			kill();
 		}else {
 			handler.getWorld().playerLocation[xCoord][yCoord]=true;
 		}
@@ -172,11 +173,9 @@ public class Player {
 						displayScore= trackScore;
 					} 
 				} else {
-					State.setState(handler.getGame().gameOverState);
 					kill();
 				}
 			} else {
-				State.setState(handler.getGame().gameOverState);
 				kill();
 			}
 				} else if(checkApple == true) {
@@ -352,6 +351,7 @@ public class Player {
 			for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
 
 				handler.getWorld().playerLocation[i][j]=false;
+				State.setState(handler.getGame().gameOverState);
 
 			}
 		}
