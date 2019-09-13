@@ -56,14 +56,7 @@ public class Player {
 	    	
 	    	
 	    }
-		private static Color randomColor() {
-			Random newColor = new Random();
-			float red = newColor.nextFloat();
-			float green = newColor.nextFloat();
-			float blue = newColor.nextFloat();
-			return new Color(red,green,blue);
-	}
-		private static Color newColor = null;
+
 		
 
 	public Player(Handler handler){
@@ -76,7 +69,6 @@ public class Player {
 		lenght= 1;
 		speed = 8;
 		steps = 0;
-		newColor = randomColor();
 
 	}
 
@@ -200,10 +192,13 @@ public class Player {
 	public void render(Graphics g,Boolean[][] playeLocation){
 		checkApple = Apple.isGood();
 		//        Random r = new Random();
-		g.setColor(new Color(172, 225, 175));;
+		Color newGreen = new Color(172, 225, 175);
+		Color brown = new Color(131, 105, 83);
+		Color newRed = new Color(201, 20, 20);
+		g.setColor(newGreen);;
 		g.setFont(new Font("Monospaced",1,40));
 		g.drawString("Score: "+displayScore, 4, 35);
-		Color newGreen = new Color(172, 225, 175);
+		
 		
 		
 		for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
@@ -211,7 +206,7 @@ public class Player {
 				 
 
 				if(playeLocation[i][j]) { // sets the color to the snake
-					g.setColor(Player.newColor);
+					g.setColor(newGreen);
 					g.fillRect((i*handler.getWorld().GridPixelsize),
 							(j*handler.getWorld().GridPixelsize),
 							handler.getWorld().GridPixelsize,
@@ -219,9 +214,9 @@ public class Player {
 				}
 				if (handler.getWorld().appleLocation[i][j]){ // sets color to the apple
 					if (checkApple == true) {
-						g.setColor(Color.RED);
+						g.setColor(newRed);
 					} else if(checkApple == false) {
-						g.setColor(Color.black);
+						g.setColor(brown);
 					}
 					g.fillRect((i*handler.getWorld().GridPixelsize),
 							(j*handler.getWorld().GridPixelsize),
