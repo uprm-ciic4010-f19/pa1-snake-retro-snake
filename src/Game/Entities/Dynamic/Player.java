@@ -82,7 +82,6 @@ public class Player {
 	public void tick(){
 		moveCounter++;
 		steps ++;
-		System.out.println(steps);
 		if(moveCounter>=speed) { // this changes the speed
 			checkCollisionAndMove();
 			moveCounter=0;
@@ -117,7 +116,7 @@ public class Player {
 	}
 
 	public void checkCollisionAndMove(){
-		checkApple = Apple.isGood();
+		
 		handler.getWorld().playerLocation[xCoord][yCoord]=false;
 		int x = xCoord;
 		int y = yCoord;
@@ -160,28 +159,33 @@ public class Player {
 
 		if(handler.getWorld().appleLocation[xCoord][yCoord]){
 			Eat();
-			trackScore += Math.sqrt(2*trackScore+1);
-			if(displayScore<trackScore) {
-				displayScore= trackScore;
-//			if (checkApple == false) {
-//				if(handler.getWorld().body.size() > 1 && handler.getWorld().body.isEmpty() == false) {
-//					
-//					} 
-//					handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
-//					handler.getWorld().body.removeLast();
-//					handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
-//					handler.getWorld().body.removeLast();
-//				} else {
-//					kill();
-//				}
-//				}
-//			
-//			if (checkApple == true) {
-//				trackScore += Math.sqrt(2*trackScore+1);
-//				if(displayScore<trackScore) {
-//				displayScore= trackScore;
-//				}
-//			}
+			if (checkApple == false) {
+				if( handler.getWorld().body.isEmpty() == false) {
+					if (handler.getWorld().body.size() > 1) {
+					speed ++;
+					handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
+					handler.getWorld().body.removeLast();
+					handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
+					handler.getWorld().body.removeLast();
+					trackScore -= Math.sqrt(2*trackScore+1);
+					if(displayScore<trackScore) {
+						displayScore= trackScore;
+					} 
+				} else {
+					State.setState(handler.getGame().gameOverState);
+					kill();
+				}
+			} else {
+				State.setState(handler.getGame().gameOverState);
+				kill();
+			}
+				} else if(checkApple == true) {
+					speed --;
+					trackScore += Math.sqrt(2*trackScore+1);
+					if(displayScore<trackScore) {
+						displayScore= trackScore;
+				}
+			}
 		}
 
 		if(!handler.getWorld().body.isEmpty()) {
@@ -192,9 +196,10 @@ public class Player {
 		}
 
 
-		}
+
 
 	public void render(Graphics g,Boolean[][] playeLocation){
+		checkApple = Apple.isGood();
 		//        Random r = new Random();
 		g.setColor(new Color(172, 225, 175));;
 		g.setFont(new Font("Monospaced",1,40));
@@ -234,7 +239,6 @@ public class Player {
 
 	public void Eat(){
 		lenght++;
-		speed --;
 		Tail tail= null;
 		handler.getWorld().appleLocation[xCoord][yCoord]=false;
 		handler.getWorld().appleOnBoard=false;

@@ -21,17 +21,17 @@ public class Apple {
         this.xCoord=x;
         this.yCoord=y;
         this.alive = Player.steps;
-        Apple.rotten = alive + 100;
+        Apple.rotten = alive + 250;
     }
     
     public static boolean isGood(){
     	if (Player.steps > rotten) {
     		goodApple = false;
-    		System.out.println("Apple is bad" + Player.steps);
+    		System.out.println("Apple is bad " + Player.steps);
     		return goodApple;
     	} else {
     		goodApple = true;
-    		System.out.println("Apple is good" + Player.steps);
+    		System.out.println("Apple is good " + Player.steps);
     		return goodApple;
     	}
     	    }
