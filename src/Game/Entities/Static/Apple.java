@@ -11,27 +11,26 @@ public class Apple {
     private Handler handler;
 
     public int xCoord;
-    public int yCoord, alive;
+    public int yCoord;
     public static boolean goodApple;
-    public static int rotten;
+    public static int turnsRotten;
     
 
     public Apple(Handler handler,int x, int y){
         this.handler=handler;
         this.xCoord=x;
         this.yCoord=y;
-        this.alive = Player.steps;
-        Apple.rotten = alive + 300;
+        turnsRotten = Player.steps + 300;
     }
     
     public static boolean isGood(){
-    	if (Player.steps > rotten) {
+    	if (Player.steps > turnsRotten) {
     		goodApple = false;
-    		System.out.println("Apple is bad " + Player.steps);
+    		System.out.println("Apple rotten " + Player.steps);
     		return goodApple;
     	} else {
     		goodApple = true;
-    		System.out.println("Apple is good " + Player.steps);
+    		System.out.println("Apple good " + Player.steps);
     		return goodApple;
     	}
     	    }

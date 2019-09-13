@@ -161,7 +161,10 @@ public class Player {
 					handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
 					handler.getWorld().body.removeLast();
 					trackScore -= Math.sqrt(2*trackScore+1);
-					if(displayScore<trackScore) {
+					if(displayScore != trackScore) {
+						if (trackScore < 0) {
+							trackScore = 0.0;
+						}
 						displayScore= trackScore;
 					} 
 				} else {
@@ -173,7 +176,7 @@ public class Player {
 				} else if(checkApple == true) {
 					speed --;
 					trackScore += Math.sqrt(2*trackScore+1);
-					if(displayScore<trackScore) {
+					if(displayScore != trackScore) {
 						displayScore= trackScore;
 				}
 			}
